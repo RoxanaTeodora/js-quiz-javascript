@@ -25,3 +25,7 @@
     // Get the guessed value from the clicked button
     // Use a conditional to compare the guess to the fact's answer
     // and add the "correct"/"incorrect" class as appropriate
+
+//Style the appliction
+//I checked the https://themeforest.net/ and I choose the style of this application: https://templates.seekviral.com/quiza/quiz/Quiz6/index.html
+//

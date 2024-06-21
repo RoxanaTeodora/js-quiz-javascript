@@ -3,22 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <title>Quiz.js</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
     <header>
-      <!-- <h1>Quiz.js</h1> -->
-      <p>Do you know JS? Find out!</p>
-      <img src="../assests/questrion.webp" alt="question" class="img" />
+      <div class="progress">
+        <div class="progress-tracking"></div>
+      </div>
+    </header>
+    <main class="background-quiz">
       <div id="score">
         Score: <span id="correct">0</span> / <span id="completed">0</span>
       </div>
-    </header>
-
-    <main>
       <div id="statement"></div>
 
       <span id="options">
@@ -31,21 +33,13 @@
       <button id="next-question" name="next-question" class="btn-next-question">
         Next Question
       </button>
-      <span>
-        <!-- <button
-          id="previos-question"
-          name="next-question"
-          class="btn-next-question"
-        >
-          Previous Question
-        </button></span 
-      >-->
-      <p class="p-progress">Your progress:</p>
-      <div class="progress">
-        <div class="progress-tracking"></div>
-        
-      </div>
     </main>
+
+    <img
+      src="../assests/question-mark-v1.png"
+      alt="question"
+      class="img-qustion"
+    />
   </body>
-  <script src="./script/app.js"></script>
+  <script src="script/app.js" type="module"></script>
 </html>
