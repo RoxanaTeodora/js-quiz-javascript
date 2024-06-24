@@ -169,13 +169,14 @@ button {
   .progress {
     background-color: var(--ui-color-primary-400);
     height: 1.8rem;
-    width: 28rem;
+    width: 26rem;
     border-radius: 0;
   }
 
   .background-quiz {
     height: 50rem;
     margin-top: 2rem;
+    width: 28rem;
   }
 
   #explanation {
