@@ -2,21 +2,19 @@
   --ui-color-primary-100: #012f47;
   --ui-color-primary-200: #1a4359;
   --ui-color-primary-300: #33586b;
-  --ui-color-primary-400: grey;
+  --ui-color-primary-400: #ccd5da;
+  --ui-color-white: #ffffff;
   --ui-color-wrong: #ffb6c1;
   --ui-color-right: #90ee90;
   --ui-color-shadow-100: #f5f7f8;
-  --ui-color-shadow-200: #ff7d29;
-  --ui-color-font: #272727;
 }
 
 * {
-  // simple reset
   margin: 0;
   padding: 0;
-  // setting of box-sizing
   box-sizing: border-box;
 }
+
 html {
   // font scaling
   font-size: 62.5%;
@@ -27,15 +25,42 @@ body {
   font-weight: 500;
   background-image: url("../assests/background.png");
   background-size: cover;
+  font-size: 1.6rem;
 }
 
 header {
   width: 50%;
-  margin: 1rem auto;
+  margin: 2.5rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.progress {
+  background-color: var(--ui-color-primary-400);
+  border-radius: 2rem;
+  height: 1.8rem;
+  width: 40rem;
+}
+
+.progress-tracking {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: repeating-linear-gradient(
+    to left,
+    var(--ui-color-primary-100),
+    var(--ui-color-primary-200),
+    var(--ui-color-primary-300),
+    var(--ui-color-primary-400)
+  );
+  border-radius: 2rem;
+  height: 100%;
+  width: 0;
+  transition: 1s ease 0.3s;
+  font-size: large;
+  color: var(--ui-color-primary-400);
 }
 
 main {
@@ -49,19 +74,18 @@ main {
 }
 
 .background-quiz {
-  background-color: white;
+  background-color: var(--ui-color-white);
   border-radius: 4rem;
   height: 38rem;
   width: 60rem;
   position: relative;
-  margin-top: 4rem;
+  margin-top: 8rem;
 }
 
 #statement {
   padding-top: 2rem;
-  font-size: xx-large;
   text-align: center;
-  margin: 1rem 0px;
+  margin: 1rem 0rem;
   min-height: 2em;
 }
 
@@ -74,11 +98,9 @@ main {
   padding: 0 3rem;
   text-align: center;
   height: 5rem;
-  font-size: x-large;
 }
 
 #score {
-  font-size: x-large;
   padding-top: 3rem;
 }
 
@@ -92,7 +114,7 @@ main {
 
 button {
   background-color: var(--ui-color-primary-100);
-  color: white;
+  color: var(--ui-color-white);
   padding: 0.5rem;
   border: none;
 }
@@ -100,7 +122,7 @@ button {
 .btn-answers {
   padding: 0.5rem;
   margin: 1rem;
-  font-size: medium;
+
   width: 5rem;
   height: 5rem;
   position: relative;
@@ -117,51 +139,60 @@ button {
   height: 5rem;
   border-radius: 100%;
   margin-top: 2rem;
-  color: white;
+  color: var(--ui-color-white);
 }
 
 .correct {
   background-color: var(--ui-color-right);
-  color: white;
+  color: var(--ui-color-white);
 }
 
 .incorrect {
   background-color: var(--ui-color-wrong);
-  color: white;
+  color: var(--ui-color-white);
 }
 
 .img-qustion {
   width: 15rem;
-  position: absolute; /* Change to absolute positioning */
+  position: absolute;
   top: 0; /* Position at the top */
   left: 50%; /* Center horizontally */
-  transform: translateX(-50%) translateY(-50%); /* Adjust for centering */
-  z-index: 10; /* Ensure it's on top */
-  padding-top: 18rem;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+  padding-top: 27rem;
 }
 
-.progress {
-  background-color: var(--ui-color-primary-400);
-  border-radius: 20px;
-  height: 30px;
-  width: 600px;
-}
+@media (max-width: 600px) {
+  header {
+    margin: 0.1rem auto;
+  }
+  .progress {
+    background-color: var(--ui-color-primary-400);
+    height: 1.8rem;
+    width: 28rem;
+    border-radius: 0;
+  }
 
-.progress-tracking {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: repeating-linear-gradient(
-    to left,
-    var(--ui-color-primary-100),
-    var(--ui-color-primary-200),
-    var(--ui-color-primary-300),
-    var(--ui-color-primary-400)
-  );
-  box-shadow: 0 5px 5px -6px var(--ui-color-shadow-100),
-    0 3px 7px var(--ui-color-shadow-100);
-  border-radius: 20px;
-  height: 100%;
-  width: 0;
-  transition: 1s ease 0.3s;
+  .background-quiz {
+    height: 50rem;
+    margin-top: 2rem;
+  }
+
+  #explanation {
+    margin-top: 1rem;
+    padding: 0 1rem;
+  }
+  .btn-next-question {
+    margin-top: 7rem;
+  }
+
+  .img-qustion {
+    width: 15rem;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 10;
+    padding-top: 16rem;
+  }
 }

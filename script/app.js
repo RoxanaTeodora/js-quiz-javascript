@@ -90,5 +90,4 @@ let max = 50;
 
 function changeProgressBar() {
   progressTracking.style.width = `50%`;
-  progressTracking.innerHTML = `50%`;
 }
