@@ -15,11 +15,6 @@
   box-sizing: border-box;
 }
 
-html {
-  // font scaling
-  font-size: 62.5%;
-}
-
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -28,13 +23,18 @@ body {
   font-size: 1.6rem;
 }
 
+header,
+.progress-tracking,
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 header {
   width: 50%;
   margin: 2.5rem auto;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .progress {
@@ -45,9 +45,6 @@ header {
 }
 
 .progress-tracking {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-image: repeating-linear-gradient(
     to left,
     var(--ui-color-primary-100),
@@ -67,10 +64,7 @@ main {
   min-width: 25rem;
   max-width: 70%;
   margin: 0px auto;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .background-quiz {
@@ -82,10 +76,14 @@ main {
   margin-top: 8rem;
 }
 
-#statement {
-  padding-top: 2rem;
+#statement,
+#explanation {
   text-align: center;
-  margin: 1rem 0rem;
+  margin-top: 2rem;
+}
+
+#statement {
+  padding: 1rem 0rem;
   min-height: 2em;
 }
 
@@ -94,22 +92,12 @@ main {
 }
 
 #explanation {
-  margin-top: 2rem;
   padding: 0 3rem;
-  text-align: center;
   height: 5rem;
 }
 
 #score {
   padding-top: 3rem;
-}
-
-#options {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-item: center;
-  justify-content: center;
 }
 
 button {
@@ -119,14 +107,17 @@ button {
   border: none;
 }
 
+.btn-answers,
+.btn-next-question {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+}
+
 .btn-answers {
   padding: 0.5rem;
   margin: 1rem;
-
-  width: 5rem;
-  height: 5rem;
   position: relative;
-  border-radius: 100%;
   transition: transform 0.3s ease;
 
   &:hover {
@@ -135,21 +126,15 @@ button {
 }
 
 .btn-next-question {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 100%;
   margin-top: 2rem;
-  color: var(--ui-color-white);
 }
 
 .correct {
   background-color: var(--ui-color-right);
-  color: var(--ui-color-white);
 }
 
 .incorrect {
   background-color: var(--ui-color-wrong);
-  color: var(--ui-color-white);
 }
 
 .img-qustion {

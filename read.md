@@ -27,5 +27,6 @@
     // and add the "correct"/"incorrect" class as appropriate
 
 //Style the appliction
-//I continue the js quizz that I did during the Anjana Vakil's cours (i thought it was faster to work on a app that I already did/ but I can start over with )
+//I continue the js quizz that I did during the Anjana Vakil's cours (i thought it was faster to work on a app that I already did/ but I can start over with https://javascriptissexy.com/how-to-learn-javascript-properly/ )
 //I checked the https://themeforest.net/ and I choose the style of this application: https://templates.seekviral.com/quiza/quiz/Quiz6/index.html and https://templates.seekviral.com/qzain/quiz/Quiz12/index.html
+I made a deploy https://quiz-js-roxana-teodora.netlify.app/

@@ -37,7 +37,6 @@ function getNextFactToQuestion() {
     // clear any previous classes
     option.classList.remove("correct");
     option.classList.remove("incorrect");
-    // make sure buttons are enabled
     enableBtn(option);
   }
 
@@ -46,9 +45,6 @@ function getNextFactToQuestion() {
 
 for (let option of optionButtons) {
   option.addEventListener("click", (e) => {
-    // When this option is clicked...
-
-    // disable all the option buttons
     for (let button of optionButtons) {
       disableBtn(button);
     }
