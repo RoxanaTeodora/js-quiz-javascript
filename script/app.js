@@ -57,11 +57,8 @@ function getNextFactToQuestion() {
     enableBtn(option);
   }
 
-  if (historyRemainingFacts.length > 0) {
-    enableBtn(nextButton);
-  } else {
-    nextButton.textContent = "No more questions!";
-  }
+  disableBtn(nextButton);
+  disableBtn(previousButton);
 
   if (historyAnsweredFactIds.length > 0) {
     enableBtn(previousButton);
@@ -95,7 +92,7 @@ function goToThePreviousQuestion() {
   }
 
   if (historyRemainingFacts.length > 0) {
-    enableBtn(nextButton);
+    disableBtn(nextButton);
   }
 
   if (!historyRemainingFacts.includes(currentFact)) {
@@ -149,6 +146,14 @@ for (let option of optionButtons) {
       historyCompletedFactIds.push(currentFact.id);
     }
     updateScore();
+
+    if (historyRemainingFacts.length > 0) {
+      enableBtn(nextButton);
+    }
+
+    if (historyAnsweredFactIds.length > 0) {
+      enableBtn(previousButton);
+    }
   });
 }
 
