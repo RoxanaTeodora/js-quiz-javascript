@@ -100,6 +100,13 @@ main {
   padding-top: 3rem;
 }
 
+.btn-for-moving {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30rem;
+}
+
 button {
   background-color: var(--ui-color-primary-100);
   color: var(--ui-color-white);
@@ -127,6 +134,7 @@ button {
 
 .btn-next-question {
   margin-top: 2rem;
+  background-color: var(--ui-color-white);
 }
 
 .correct {
@@ -145,6 +153,26 @@ button {
   transform: translateX(-50%) translateY(-50%);
   z-index: 10;
   padding-top: 27rem;
+}
+
+.img-arrow-next {
+  width: 3rem;
+  margin: 2.5px 0 0 2px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translate(10px, 0px);
+  }
+}
+
+.img-arrow-previous {
+  width: 3rem;
+  margin: 2.5px 0 0 2px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translate(-10px, 0px);
+  }
 }
 
 @media (max-width: 600px) {
@@ -168,8 +196,12 @@ button {
     margin-top: 1rem;
     padding: 0 1rem;
   }
-  .btn-next-question {
-    margin-top: 7rem;
+
+  .btn-for-moving {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
   }
 
   .img-qustion {
