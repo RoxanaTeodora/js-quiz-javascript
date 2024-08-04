@@ -1,9 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fist commit</title>
+    <title>Quiz.js</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style/style.css" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="progress">
+        <div class="progress-tracking"></div>
+      </div>
+    </header>
+    <main class="background-quiz">
+      <div id="score">
+        Score: <span id="correct">0</span> / <span id="completed">0</span>
+      </div>
+      <div id="statement"></div>
+
+      <div id="options">
+        <button name="true" value="true" class="btn-answers">True</button>
+
+        <button name="false" value="false" class="btn-answers">False</button>
+      </div>
+
+      <div id="explanation" class="hidden"></div>
+      <div class="btn-for-moving">
+        <button
+          id="previos-question"
+          name="next-question"
+          class="btn-next-question"
+        >
+          <img
+            src="../assests/arrow-prev.png"
+            alt="previous-question"
+            class="img-arrow-previous"
+          />=
+        </button>
+        <button
+          id="next-question"
+          name="next-question"
+          class="btn-next-question"
+        >
+          <img
+            src="../assests/arrow-nxt.png"
+            alt="next-question"
+            class="img-arrow-next"
+          />
+        </button>
+      </div>
+    </main>
+
+    <img
+      src="../assests/question-mark-v1.png"
+      alt="question"
+      class="img-qustion"
+    />
+  </body>
+  <script src="script/app.js" type="module"></script>
 </html>
