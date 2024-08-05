@@ -11,8 +11,9 @@ let correct = 0;
 let completed = 0;
 const totalQuestions = facts.length;
 let historyRemainingFacts = [...facts];
-let historyCompletedFactIds = [];
+let historyAnswereCorrectFactIds = [];
 let historyAnsweredFactIds = [];
+let currentQuestionIndex = 0;
 
 function hideExplanation(element) {
   element.classList.add("hidden");
@@ -28,28 +29,56 @@ const enableBtn = (button) => button.removeAttribute("disabled");
 nextButton.addEventListener("click", getNextFactToQuestion);
 previousButton.addEventListener("click", goToThePreviousQuestion);
 
-function getNextFactToQuestion() {
-  if (historyRemainingFacts.length === 0) {
-    alert("No more questions!");
-    return;
-  }
+// disable next question btn before answering
+function validateAnswer() {
+  return Array.from(optionButtons).some(
+    (button) =>
+      button.classList.contains("correct") ||
+      button.classList.contains("incorrect")
+  );
+}
 
-  if (currentFact && !historyCompletedFactIds.includes(currentFact.id)) {
-    historyCompletedFactIds.push(currentFact.id);
+function getNextFactToQuestion() {
+  if (currentFact && !historyAnswereCorrectFactIds.includes(currentFact.id)) {
+    historyAnswereCorrectFactIds.push(currentFact.id);
   }
 
   if (currentFact) {
     historyAnsweredFactIds.push(currentFact.id);
   }
-  currentFact = historyRemainingFacts.shift();
-  if (!currentFact) return;
+
+  if (currentQuestionIndex < totalQuestions - 1) {
+    currentQuestionIndex++;
+    loadQuestion(currentQuestionIndex);
+
+    if (currentQuestionIndex === totalQuestions - 1) {
+      nextButton.classList.add("hidden");
+    }
+
+    previousButton.classList.remove("hidden");
+  }
+}
+
+function goToThePreviousQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    loadQuestion(currentQuestionIndex);
+
+    if (currentQuestionIndex === 0) {
+      previousButton.classList.add("hidden");
+    }
+
+    nextButton.classList.remove("hidden");
+  }
+}
+
+function loadQuestion(index) {
+  currentFact = facts[index];
 
   const factToQuestion = document.getElementById("statement");
   factToQuestion.textContent = currentFact.statement;
 
   hideExplanation(explanation);
-
-  console.log(factToQuestion.textContent);
 
   for (let option of optionButtons) {
     option.classList.remove("correct");
@@ -58,57 +87,11 @@ function getNextFactToQuestion() {
   }
 
   disableBtn(nextButton);
-  disableBtn(previousButton);
 
   if (historyAnsweredFactIds.length > 0) {
     enableBtn(previousButton);
   } else {
     disableBtn(previousButton);
-  }
-}
-
-function goToThePreviousQuestion() {
-  if (historyAnsweredFactIds.length === 0) return;
-
-  const previousFactId = historyAnsweredFactIds.pop();
-  currentFact = facts.find((fact) => fact.id === previousFactId);
-
-  if (!currentFact) return;
-
-  const factToQuestion = document.getElementById("statement");
-  factToQuestion.textContent = currentFact.statement;
-
-  hideExplanation(explanation);
-  console.log(factToQuestion.textContent);
-
-  for (let option of optionButtons) {
-    option.classList.remove("correct");
-    option.classList.remove("incorrect");
-    enableBtn(option);
-  }
-
-  if (historyAnsweredFactIds.length === 0) {
-    disableBtn(previousButton);
-  }
-
-  if (historyRemainingFacts.length > 0) {
-    disableBtn(nextButton);
-  }
-
-  if (!historyRemainingFacts.includes(currentFact)) {
-    historyRemainingFacts.unshift(currentFact);
-  }
-
-  if (
-    historyCompletedFactIds.includes(currentFact.id) &&
-    historyCompletedFactIds > 0
-  ) {
-    historyCompletedFactIds = historyCompletedFactIds.filter(
-      (id) => id !== currentFact.id
-    );
-    correct--;
-    completed--;
-    updateScore();
   }
 }
 
@@ -120,15 +103,13 @@ for (let option of optionButtons) {
 
     if (historyRemainingFacts.length > 0) {
       enableBtn(nextButton);
-    } else {
-      nextButton.textContent = "No more questions!";
     }
 
     const guess = e.target.value;
     if (guess === currentFact.answer) {
       e.target.classList.add("correct");
 
-      if (!historyCompletedFactIds.includes(currentFact.id)) {
+      if (!historyAnswereCorrectFactIds.includes(currentFact.id)) {
         if (correct < totalQuestions) {
           correct++;
         }
@@ -140,10 +121,9 @@ for (let option of optionButtons) {
     explanation.textContent = currentFact.explanation;
     showExplanation(explanation);
 
-    // update score
-    if (!historyCompletedFactIds.includes(currentFact.id)) {
+    if (!historyAnswereCorrectFactIds.includes(currentFact.id)) {
       completed++;
-      historyCompletedFactIds.push(currentFact.id);
+      historyAnswereCorrectFactIds.push(currentFact.id);
     }
     updateScore();
 
@@ -171,4 +151,4 @@ function updateScore() {
   )}%`;
 }
 
-getNextFactToQuestion();
+loadQuestion(currentQuestionIndex);
