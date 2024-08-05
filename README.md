@@ -1,5 +1,5 @@
 ## I continued the js quiz that I did during Anjana Vakil's course, I added a new interactive style, progress bar and previous button 
-I made a deployment https://quiz-js-roxana-teodora.netlify.app/
+I made a deployment https://quiz-js-roxana-teodora.netlify.app/, was inspired by https://templates.seekviral.com/quiza/quiz/Quiz6/index.html and https://templates.seekviral.com/qzain/quiz/Quiz12/index.html
 
 ### TODO 1: Declare & assign variables pointing to the corresponding element(s)
 statement should be the "statement" div
